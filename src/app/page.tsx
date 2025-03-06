@@ -5,9 +5,9 @@ export default function Home() {
   return (
     <main className='min-h-screen p-8'>
       <div className='max-w-4xl mx-auto'>
-        <div className='mb-8'>
+        <header className='flex justify-between items-end mb-12 '>
           <WalletConnect />
-        </div>
+        </header>
 
         <div className='text-center mb-12'>
           <h1 className='text-4xl font-bold mb-4'>Bitcoin Inscription App</h1>
