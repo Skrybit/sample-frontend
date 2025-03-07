@@ -28,7 +28,6 @@ const WalletContext = createContext<WalletContextType>({
   disconnect: () => {},
 });
 
-//
 export const useWallet = () => useContext(WalletContext);
 
 export function WalletProvider({ children }: WalletProviderProps) {
@@ -158,7 +157,6 @@ export function WalletProvider({ children }: WalletProviderProps) {
           });
 
           if (!result?.result?.length) {
-            // throw new Error('No accounts found');
             const errMsg = 'No accounts found';
             showFullError(errMsg);
             return;
@@ -185,8 +183,6 @@ export function WalletProvider({ children }: WalletProviderProps) {
         }
       }
 
-      // setAddress(address);
-      // setShowModal(false);
       toaster.success('Connected', { id: '2' });
     } catch (err) {
       const errMsg = 'Connection failed' + JSON.stringify((err as Error).message);
@@ -196,8 +192,6 @@ export function WalletProvider({ children }: WalletProviderProps) {
   };
 
   const disconnectWallet = () => {
-    // setAddress('');
-    //
     setPaymentAddress('');
     setBalance('0');
     setIsConnected(false);
@@ -218,59 +212,4 @@ export function WalletProvider({ children }: WalletProviderProps) {
       {children}
     </WalletContext.Provider>
   );
-  // return (
-  //   <div>
-  //     {address ? (
-  //       <div>
-  //         <p>
-  //           Connected: {address.slice(0, 6)}...{address.slice(-4)}
-  //         </p>
-  //         <button onClick={disconnectWallet}>Disconnect</button>
-  //       </div>
-  //     ) : (
-  //       <button onClick={() => setShowModal(true)}>Connect Wallet</button>
-  //     )}
-  //
-  //     {showModal && (
-  //       <div
-  //         style={{
-  //           position: 'fixed',
-  //           top: '50%',
-  //           left: '50%',
-  //           transform: 'translate(-50%, -50%)',
-  //           padding: '20px',
-  //           background: 'white',
-  //           borderRadius: '8px',
-  //           boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-  //         }}
-  //       >
-  //         <h3>Select Wallet</h3>
-  //         {detectedWallets.length === 0 && <p>No Bitcoin wallets detected</p>}
-  //
-  //         {detectedWallets.map((wallet) => (
-  //           <button
-  //             key={wallet}
-  //             onClick={() => connectWallet(wallet)}
-  //             style={{
-  //               display: 'block',
-  //               margin: '10px 0',
-  //               padding: '10px 20px',
-  //               width: '100%',
-  //             }}
-  //           >
-  //             {wallet.charAt(0).toUpperCase() + wallet.slice(1)}
-  //           </button>
-  //         ))}
-  //
-  //         <button onClick={() => setShowModal(false)} style={{ marginTop: '15px' }}>
-  //           Close
-  //         </button>
-  //
-  //         {error && <p style={{ color: 'red' }}>{error}</p>}
-  //       </div>
-  //     )}
-  //   </div>
-  // );
 }
-
-// export default WalletConnector;

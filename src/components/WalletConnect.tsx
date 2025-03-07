@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-// import { useWallet } from '@/contexts/WalletContext';
 import { useWallet } from '@/contexts/WallletContextNew';
 
 export default function WalletConnect() {
@@ -95,7 +94,7 @@ export default function WalletConnect() {
                   key={wallet}
                   onClick={async () => {
                     setIsConnecting(true);
-                    // Add artificial delay
+                    // Add artificial delay, remove on prod
                     await new Promise((resolve) => setTimeout(resolve, 1000));
                     try {
                       await connect(wallet);
